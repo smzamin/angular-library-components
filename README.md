@@ -14,18 +14,18 @@ This application is responsible for capturing the following user data.
 - "z-input" should be the element used to capture the user's details.
 
 You should show / use:
-> a good project structure, the cleaner the better
-> a popout for user creation,
-> *ngFor to list all of the users,
-> ControlValueAccessor usage for the "z-input" so that you can use [(ngModel)] to get the item's data in the main application
-> Reactive Forms
+- a good project structure, the cleaner the better
+- a popout for user creation,
+- *ngFor to list all of the users,
+- ControlValueAccessor usage for the "z-input" so that you can use [(ngModel)] to get the item's data in the main application
+- Reactive Forms
 
 # Commands used
 
-ng new comp-library --create-application=false
-cd comp-library
-ng generate library z-list-item --prefix=z-list-item
-ng generate application user-listing
-ng build z-list-item
-ng build user-listing --prod
-ng serve user-listing
+- ng new comp-library --create-application=false
+- cd comp-library
+- ng generate library z-list-item --prefix=z-list-item
+- ng generate application user-listing
+- ng build z-list-item
+- ng build user-listing --prod
+- ng serve user-listing
