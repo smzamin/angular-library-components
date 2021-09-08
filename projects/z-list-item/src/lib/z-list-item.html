@@ -1,0 +1,25 @@
+<div *ngIf="userList.length > 0; else noUsers">
+  <div class="userDetail mt-3" *ngFor="let users of userList">
+    <span class="circle"></span>
+    <div class="user">
+      <h4>{{ users.firstName + ' ' + users.surname }}</h4>
+      <h5 *ngIf="users.hobbiesArray.length > 0; else noHobby">
+        <ng-container *ngFor="let item of users.hobbiesArray; let isLast = last">
+          <span class="text-capitalize">{{ item }}{{isLast ? '' : ', '}}</span>
+        </ng-container>
+      </h5>
+      <ng-template #noHobby>
+        <h5>No Hobby Added</h5>
+      </ng-template>
+
+    </div>
+    <i class="bi bi-x-lg"></i>
+  </div>
+</div>
+
+<ng-template #noUsers>
+  <div class="noUser">
+    <h2 class="text-capitalized">No Users Created Yet</h2>
+    <h5>Please create users to view the list of users in this area.</h5>
+  </div>
+</ng-template>

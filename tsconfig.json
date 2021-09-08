@@ -19,12 +19,18 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "z-list-item": [
+        "dist/z-list-item/z-list-item",
+        "dist/z-list-item"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "enableIvy": true,
+    "fullTemplateTypeCheck": true,
   }
 }

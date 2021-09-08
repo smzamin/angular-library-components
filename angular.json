@@ -3,5 +3,142 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "z-list-item": {
+      "projectType": "library",
+      "root": "projects/z-list-item",
+      "sourceRoot": "projects/z-list-item/src",
+      "prefix": "z-list-item",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/z-list-item/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/z-list-item/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/z-list-item/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/z-list-item/src/test.ts",
+            "tsConfig": "projects/z-list-item/tsconfig.spec.json",
+            "karmaConfig": "projects/z-list-item/karma.conf.js"
+          }
+        }
+      }
+    },
+    "user-listing": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/user-listing",
+      "sourceRoot": "projects/user-listing/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/user-listing",
+            "index": "projects/user-listing/src/index.html",
+            "main": "projects/user-listing/src/main.ts",
+            "polyfills": "projects/user-listing/src/polyfills.ts",
+            "tsConfig": "projects/user-listing/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/user-listing/src/favicon.ico",
+              "projects/user-listing/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "projects/user-listing/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/user-listing/src/environments/environment.ts",
+                  "with": "projects/user-listing/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "user-listing:build:production"
+            },
+            "development": {
+              "browserTarget": "user-listing:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "user-listing:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/user-listing/src/test.ts",
+            "polyfills": "projects/user-listing/src/polyfills.ts",
+            "tsConfig": "projects/user-listing/tsconfig.spec.json",
+            "karmaConfig": "projects/user-listing/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/user-listing/src/favicon.ico",
+              "projects/user-listing/src/assets"
+            ],
+            "styles": [
+              "projects/user-listing/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "z-list-item"
 }

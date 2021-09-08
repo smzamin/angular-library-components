@@ -1,0 +1,70 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-xl-10 col-xxl-12">
+
+      <div class="list-header">
+        <div class="list">
+          <h4>LIST OF USERS</h4>
+          <h5>A list of all the users that have been created on this application</h5>
+        </div>
+        <div>
+          <button class="btn btn-primary" (click)="openModal(addUserModal)">Add User</button>
+        </div>
+      </div>
+
+      <span class="divider"></span>
+
+      <z-list-item></z-list-item>
+
+    </div>
+  </div>
+</div>
+
+
+<ng-template #addUserModal>
+  <form [formGroup]="userForm">
+    <div class="modal-header">
+      <div class="header">
+        <h4>Add A User</h4>
+        <h6>Fill in the following form to add a user.</h6>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid" (click)="addUser(userForm.value)">Add
+        User</button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+
+        <div class="col-12 mb-3">
+          <label for="firstname" class="form-label">First Name</label>
+          <input type="text" class="form-control" formControlName="firstName" placeholder="Enter your first name">
+        </div>
+        <div class="col-12 mb-3">
+          <label for="surname" class="form-label">Surname</label>
+          <input type="text" class="form-control" formControlName="surname" placeholder="Enter your surname name">
+        </div>
+
+        <span class="divider"></span>
+
+        <form [formGroup]="hobbyForm">
+          <div class="col-12 mb-3">
+            <label for="hobby" class="form-label">Hobby</label>
+            <input type="text" class="form-control" formControlName="data" placeholder="Enter a hobby name">
+          </div>
+          <ng-container *ngIf="hobbyItems.length > 0">
+            <ul class="list-group" *ngFor="let item of hobbyItems">
+              <li class="list-group-item">{{ item }}</li>
+            </ul>
+          </ng-container>
+          <div class="col-12 text-center">
+            <button type="submit" class="w-50 btn btn-primary" [disabled]="!hobbyForm.valid"
+              (click)="addItem(hobbyForm.value)">Add Hobby</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </form>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="hideModal()">Cancel</button>
+  </div>
+</ng-template>

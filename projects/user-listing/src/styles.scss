@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+
+.noUser {
+  background-color: #F2F2F2;
+  padding: 3rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #F1622F;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h5 {
+  font-size: .95rem;
+  color: #464646;
+}
+
+.list-header {
+  display: flex;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  justify-content: space-between;
+}
+
+.list h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.list h5 {
+  font-size: 1rem;
+}
+
+.divider {
+  border-top: 1px solid #464646;
+  width: 100%;
+  display: block;
+  margin: 20px 0 35px 0;
+}
+
+.userDetail {
+  display: flex;
+  border: 1px solid #464646;
+  padding: 1rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.userDetail h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.userDetail h5 {
+  font-size: .75rem;
+}
+
+.userDetail i {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FF0000;
+}
+
+.user {
+  width: 100%;
+}
+
+.circle {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #464646;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #FF0000;
+}
+
+.header h6 {
+  font-size: .9rem;
+}
+
+.modal-body label {
+  font-size: .9rem;
+}
