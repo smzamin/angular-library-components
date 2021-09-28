@@ -1,8 +1,9 @@
-<div *ngIf="userList.length > 0; else noUsers">
-  <div class="userDetail mt-3" *ngFor="let users of userList">
+<div>
+<!-- <div *ngIf="userList.length > 0; else noUsers"> -->
+  <!-- <div class="userDetail mt-3" *ngFor="let users of userList; let i = index">
     <span class="circle"></span>
     <div class="user">
-      <h4>{{ users.firstName + ' ' + users.surname }}</h4>
+      <h4>{{ users.firstName + ' ' + users.lastName }}</h4>
       <h5 *ngIf="users.hobbiesArray.length > 0; else noHobby">
         <ng-container *ngFor="let item of users.hobbiesArray; let isLast = last">
           <span class="text-capitalize">{{ item }}{{isLast ? '' : ', '}}</span>
@@ -11,10 +12,67 @@
       <ng-template #noHobby>
         <h5>No Hobby Added</h5>
       </ng-template>
-
     </div>
-    <i class="bi bi-x-lg"></i>
-  </div>
+    <i class="bi bi-x-lg" role="button" (click)="delete(i)"></i>
+  </div> -->
+
+  <section class="d-flex">
+    <section class="col-md-3">
+      <h5>User List</h5>
+      <div class="list-sorted" cdkDropList #dropList1="cdkDropList" [cdkDropListData]="allUsers"
+        [cdkDropListConnectedTo]="[dropList2]" (cdkDropListDropped)="drop($event)">
+
+        <div cdkDrag class="list-sorted__item" *ngFor="let users of allUsers; let i = index">
+          {{ users.firstName }}
+        </div>
+
+      </div>
+    </section>
+
+    <section class="col-md-9">
+      <h5>User Details</h5>
+      <div class="list-sorted w-100" cdkDropList #dropList2="cdkDropList" [cdkDropListData]="usersDetails"
+      [cdkDropListConnectedTo]="[dropList1]" (cdkDropListDropped)="drop($event)">
+
+        <table class="table table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th></th>
+              <th>First Name</th>
+              <th>Middle Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Department</th>
+              <th>Hobbies</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr cdkDrag *ngFor="let users of usersDetails; let i = index">
+              <td><i class="bi bi-arrows-move" role="button"></i></td>
+              <td>{{ users.firstName }}</td>
+              <td>{{ users.middleName }}</td>
+              <td>{{ users.lastName }}</td>
+              <td>{{ users.email }}</td>
+              <td>{{ users.department }}</td>
+              <td>
+                <span *ngIf="users.hobbiesArray.length > 0; else noHobby">
+                  <ng-container *ngFor="let item of users.hobbiesArray; let isLast = last">
+                    <span class="text-capitalize">{{ item }}{{isLast ? '' : ', '}}</span>
+                  </ng-container>
+                </span>
+                <ng-template #noHobby>
+                  <h5>No Hobby Added</h5>
+                </ng-template>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+
+  </section>
+
 </div>
 
 <ng-template #noUsers>

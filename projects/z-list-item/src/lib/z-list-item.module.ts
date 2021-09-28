@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ZListItemComponent } from './z-list-item.component';
-
+import { DragDropModule} from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -9,7 +9,7 @@ import { ZListItemComponent } from './z-list-item.component';
     ZListItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, DragDropModule
   ],
   exports: [
     ZListItemComponent
